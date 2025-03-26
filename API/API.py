@@ -38,11 +38,18 @@ def LerProdutoID(cod):
 # Modificar produto
 @app.route('/produtos/<int:cod>', methods=["PUT"])
 def modificarProduto(cod):
-    data = request.get_json()
+    data = request.get_json() # Os dados que serão alterados estarão nessa requisição, o cliente informará no body do link
     cursor.execute(f"""
                         UPDATE produtos SET nome = '{data['nome']}' WHERE cod = {cod};
                         UPDATE produtos SET qtd = {data['qtd']} WHERE cod = {cod};
                    """)
+    conexaoBD.commit()
+    return "Operação completa"
+
+# Excluir produto
+@app.route('/produtos/<int:cod>', methods=['DELETE'])
+def excluirProduto(cod):
+    cursor.execute(f"DELETE FROM produtos WHERE cod = {cod}")
     conexaoBD.commit()
     return "Operação completa"
     
