@@ -14,7 +14,25 @@ app = Flask(__name__)
 @app.route('/produtos', methods=["POST"])
 def criarProduto(nome, qtd):
     cursor.execute(f"""
-                        INSERT INTO produtos(nome, qtd) VALUES ('{nome}', {qtd})
+                        INSERT INTO produtos(nome, qtd) VALUES ('{nome}', {qtd});
                    """)
     conexaoBD.commit() # Efetiva a alteração acima no BD
     return 'Operação completa'
+
+# Ler
+
+# Ler todos
+@app.route('/produtos', methods=['GET'])
+def lerTodosProdutos():
+    cursor.execute("SELECT * FROM produtos;")
+    data = cursor.fetchall()
+    return data
+
+# Ler por código do produto
+@app.route('/produtos/<int:cod>', methods=['GET'])
+def LerProdutoID(cod):
+    cursor.execute(f"SELECT * FROM produtos WHERE cod = {cod};")
+    data = cursor.fetchall()
+    return data
+
+app.run(port=5000, host='localhost', debug=True)
