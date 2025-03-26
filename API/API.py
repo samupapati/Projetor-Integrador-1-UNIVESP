@@ -35,4 +35,15 @@ def LerProdutoID(cod):
     data = cursor.fetchall()
     return data
 
+# Modificar produto
+@app.route('/produtos/<int:cod>', methods=["PUT"])
+def modificarProduto(cod):
+    data = request.get_json()
+    cursor.execute(f"""
+                        UPDATE produtos SET nome = '{data['nome']}' WHERE cod = {cod};
+                        UPDATE produtos SET qtd = {data['qtd']} WHERE cod = {cod};
+                   """)
+    conexaoBD.commit()
+    return "Operação completa"
+    
 app.run(port=5000, host='localhost', debug=True)
