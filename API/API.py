@@ -10,13 +10,11 @@ conexaoBD = psycopg2.connect(database = "estoqueBD",
 cursor = conexaoBD.cursor()
 app = Flask(__name__)
 
-cursor.execute("CREATE TABLE teste(id INTEGER PRIMARY KEY);")
-cursor.execute('INSERT INTO teste(id) VALUES (1);')
-conexaoBD.commit()
-cursor.execute("SELECT * FROM teste;")
-print(cursor.fetchall())
-
-# #Criar
-# @app.route('/produtos', methods=["POST"])
-# def criarProduto(cod, nome, qtd):
-    
+# Criar
+@app.route('/produtos', methods=["POST"])
+def criarProduto(nome, qtd):
+    cursor.execute(f"""
+                        INSERT INTO produtos(nome, qtd) VALUES ('{nome}', {qtd})
+                   """)
+    conexaoBD.commit() # Efetiva a alteração acima no BD
+    return 'Operação completa'
