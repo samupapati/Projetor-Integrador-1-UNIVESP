@@ -12,7 +12,10 @@ app = Flask(__name__)
 
 # Criar
 @app.route('/produtos', methods=["POST"])
-def criarProduto(nome, qtd):
+def criarProduto():
+    nome = request.get_json()["nome"] # Os dados que serão alterados estarão nessa requisição, o cliente informará no body do link
+    qtd = request.get_json()["qtd"]
+    
     cursor.execute(f"""
                         INSERT INTO produtos(nome, qtd) VALUES ('{nome}', {qtd});
                    """)
@@ -38,10 +41,12 @@ def LerProdutoID(cod):
 # Modificar produto
 @app.route('/produtos/<int:cod>', methods=["PUT"])
 def modificarProduto(cod):
-    data = request.get_json() # Os dados que serão alterados estarão nessa requisição, o cliente informará no body do link
+    nome = request.get_json()["nome"]
+    qtd = request.get_json()["qtd"]
+    
     cursor.execute(f"""
-                        UPDATE produtos SET nome = '{data['nome']}' WHERE cod = {cod};
-                        UPDATE produtos SET qtd = {data['qtd']} WHERE cod = {cod};
+                        UPDATE produtos SET nome = '{nome}' WHERE cod = {cod};
+                        UPDATE produtos SET qtd = {qtd} WHERE cod = {cod};
                    """)
     conexaoBD.commit()
     return "Operação completa"
