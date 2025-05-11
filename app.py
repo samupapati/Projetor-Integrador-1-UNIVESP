@@ -1,5 +1,7 @@
 import psycopg2, os
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
+
 port = int(os.environ.get('PORT', 5000))
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
@@ -8,7 +10,7 @@ conexaoBD = psycopg2.connect(DATABASE_URL)
 cursor = conexaoBD.cursor()
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-
+CORS(app)
 
 # Rota para a página principal
 @app.route('/')
