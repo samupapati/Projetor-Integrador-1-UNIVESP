@@ -1,0 +1,105 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+table {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+table th, table td {
+    color: #ffffff;
+    border-color: #333333;
+}
+
+tbody tr {
+    color: #ffffff;
+}
+
+button {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+}
+
+button:hover {
+    background-color: #555555;
+}
+
+input, select, textarea {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    border: 1px solid #333333;
+}
+
+.modal-content {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.error-message {
+    color: #ff6b6b;
+}
+
+.navbar {
+    background-color: #1f1f1f !important; /* Deixa a navbar escura */
+}
+
+.navbar a, .navbar-brand {
+    color: #ffffff !important; /* Deixa os links da navbar brancos */
+}
+
+.navbar a:hover {
+    color: #ffcc00 !important; /* (opcional) Cor amarela quando passar o mouse */
+}
+
+.btn-primary, .btn {
+    background-color: #333333;
+    border-color: #333333;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn:hover {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+.table-responsive {
+    max-width: 1200px;
+    width: 100%;      /* A tabela irá ocupar 100% da largura disponível até atingir a largura máxima */
+    overflow-x: auto; /* Permite rolagem horizontal caso o conteúdo ultrapasse a largura */
+    margin: 0 auto;   /* Centraliza a tabela na página */
+}
+
+.table {
+    --bs-table-hover-color: #ffffff;
+}
+
+.table-primary {
+    --bs-table-color: #000;
+    --bs-table-bg: steelblue;
+    --bs-table-border-color: #bacbe6;
+    --bs-table-striped-bg: #c5d7f2;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #bacbe6;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #bfd1ec;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: #ffffff;
+}
+
+.navbar-brand {
+    font-size: xxx-large;
+}
+

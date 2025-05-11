@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Track - Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS Personalizado -->
+  <!-- <link rel="stylesheet" href="/static/css/dashboard.css"> -->
+  <link rel="stylesheet" href="/static/css/dark-theme.css">
+
+  <!-- Font Awesome para ícones (opcional, mas deixa bonito) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Stock Track</span>
+      <button class="btn btn-outline-light" id="logoutBtn" onclick="logout()">Sair</button>
+    </div>
+  </nav>
+
+      <!-- Conteúdo principal -->
+      <main class="mt-5 px-md-4 pt-5">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">Produtos</h1>
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionar">
+            <i class="fas fa-plus"></i> Adicionar Produto
+          </button>
+        </div>
+
+        <!-- Tabela de Produtos -->
+        <div class="table-responsive">
+          <table class="table table-striped table-hover" id="produtoTabela">
+            <thead class="table-primary">
+              <tr>
+                <th onclick="ordenarTabela(0)">Código <i class="fas fa-sort"></i></th>
+                <th onclick="ordenarTabela(1)">Nome <i class="fas fa-sort"></i></th>
+                <th onclick="ordenarTabela(2)">Quantidade <i class="fas fa-sort"></i></th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Produtos vão aqui via JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal Adicionar Produto -->
+  <div class="modal fade" id="modalAdicionar" tabindex="-1" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="adicionarProdutoForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalAdicionarLabel">Adicionar Produto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nomeProduto" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nomeProduto" required>
+            </div>
+            <div class="mb-3">
+              <label for="qtdProduto" class="form-label">Quantidade</label>
+              <input type="number" class="form-control" id="qtdProduto" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JQuery para Ajax -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Scripts personalizados -->
+  <script src="/static/js/dashboard.js"></script>
+
+</body>
+</html>
