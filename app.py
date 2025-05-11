@@ -4,7 +4,7 @@ port = int(os.environ.get('PORT', 5000))
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 # Tabela produtos
-conexaoBD = psycopg2.connect(database = DATABASE_URL, sslmode  = "require")
+conexaoBD = psycopg2.connect(DATABASE_URL, sslmode = "require")
 cursor = conexaoBD.cursor()
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
