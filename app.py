@@ -1,5 +1,6 @@
-import psycopg2
+import psycopg2, os
 from flask import Flask, jsonify, request, send_from_directory
+port = int(os.environ.get('PORT', 5000))
 
 # Tabela produtos
 conexaoBD = psycopg2.connect(database = "estoquebd",
@@ -112,4 +113,4 @@ def login():
     else:
         return jsonify({"message": "Usuario nao encontrado."}), 404  # Retorna erro com status 404'
 
-app.run(port=5000, host='localhost', debug=True)
+app.run(port=port, host='0.0.0.0', debug=True)
