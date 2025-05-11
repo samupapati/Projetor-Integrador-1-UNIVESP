@@ -6,7 +6,7 @@ let produtos = [];
 
         // Função para carregar todos os produtos na tabela
         function carregarProdutos() {
-            fetch("http://localhost:5000/produtos")
+            fetch("http://projetor-integrador-1-univesp.onrender.com/produtos")
                 .then(response => response.json())
                 .then(data => {
                     produtos = data; // Armazenar os produtos
@@ -88,7 +88,7 @@ let produtos = [];
                 return;
             }
         
-            fetch("http://localhost:5000/produtos", {
+            fetch("http://projetor-integrador-1-univesp.onrender.com/produtos", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -121,7 +121,7 @@ let produtos = [];
             const qtd = prompt("Nova quantidade:");
 
             if (nome && qtd) {
-                fetch(`http://localhost:5000/produtos/${cod}`, {
+                fetch(`http://projetor-integrador-1-univesp.onrender.com/produtos/${cod}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -143,7 +143,7 @@ let produtos = [];
         // Função para excluir um produto
         function excluirProduto(cod) {
             if (confirm("Tem certeza que deseja excluir este produto?")) {
-                fetch(`http://localhost:5000/produtos/${cod}`, {
+                fetch(`http://projetor-integrador-1-univesp.onrender.com/produtos/${cod}`, {
                     method: "DELETE"
                 })
                 .then(response => response.text())
